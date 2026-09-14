@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Euclid Sample-Rate Converter</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Sample-Rate Converter</h1>
+      <p class="lede">Uses Euclid's GCD to compute the L/M ratio for polyphase resampling.</p>
+    </header>
+
+    <section class="card">
+      <h2>1. Upload audio</h2>
+      <input id="fileInput" type="file" accept="audio/*" />
+      <div id="info" class="muted"></div>
+      <audio id="originalAudio" controls preload="metadata"></audio>
+    </section>
+
+    <section class="card">
+      <h2>2. Target sample rate</h2>
+      <label for="targetRate">Rate (Hz)</label>
+      <input id="targetRate" type="number" value="22050" min="1000" max="384000" step="1" list="ratePresets" />
+      <datalist id="ratePresets">
+        <option value="8000"></option>
+        <option value="16000"></option>
+        <option value="22050"></option>
+        <option value="32000"></option>
+        <option value="44100"></option>
+        <option value="48000"></option>
+      </datalist>
+      <button id="convertBtn" disabled>Convert</button>
+    </section>
+
+    <section class="card">
+      <h2>3. Result</h2>
+      <div id="status" class="muted">Choose a file to begin.</div>
+      <audio id="convertedAudio" controls preload="metadata"></audio>
+      <a id="downloadLink" hidden>Download WAV</a>
+    </section>
+  </main>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
